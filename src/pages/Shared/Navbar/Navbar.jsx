@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import Logo from '../../../assets/logo.svg';
 const Header = () => {
   return (
     <div className="navbar bg-base-100">
@@ -34,7 +36,7 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <Link to='/home'><img src={Logo} alt="car docotr logo" /></Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
