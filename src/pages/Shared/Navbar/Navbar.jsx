@@ -4,7 +4,7 @@ const Header = () => {
   const navList = (
     <>
       <li>
-        <Link to="/home">Home</Link>
+        <Link to="/">Home</Link>
       </li>
       <li>
         <Link to="/about">About</Link>
@@ -21,7 +21,7 @@ const Header = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 h-28 mb-4">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -55,7 +55,7 @@ const Header = () => {
         <ul className="menu menu-horizontal px-1">{navList}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+      <button className="btn btn-outline border-[#FF3811] btn-warning"><span className="text-[#FF3811]">Appointment</span></button>
       </div>
     </div>
   );
