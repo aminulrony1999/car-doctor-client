@@ -47,7 +47,7 @@ const Header = () => {
             {navList}
           </ul>
         </div>
-        <Link to="/home">
+        <Link to="/">
           <img src={Logo} alt="car docotr logo" />
         </Link>
       </div>
