@@ -6,7 +6,7 @@ const Footer = () => {
       <aside>
         <img src={Logo} alt="" />
         <p>
-          ACME Industries Ltd.
+          Car Doctor Ltd.
           <br />
           Providing reliable tech since 1992
         </p>
