@@ -1,13 +1,22 @@
 import { Link } from "react-router-dom";
 import loginImg from "../../assets/images/login/login.svg";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProviders";
 const SignUp = () => {
+    const {newUser,setUser,setLoading} = useContext(AuthContext);
   const handleSignUp = event =>{
     event.preventDefault();
     const form = event.target;
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const userData = {email,password};
-    console.log(userData);
+    newUser(name,email,password)
+    .then(user => {
+        setUser(user);
+        setLoading(false);
+        console.log(user);
+    })
+    .catch(error=> console.error(error));
     form.reset();
   }
   return (
@@ -19,6 +28,18 @@ const SignUp = () => {
         <div className="card shrink-0 w-full max-w-sm">
         <h1 className="text-3xl font-bold text-center">Sign Up</h1>
           <form onSubmit={handleSignUp} className="card-body">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="name"
+                className="input input-bordered"
+                required
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
