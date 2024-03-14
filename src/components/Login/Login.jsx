@@ -7,6 +7,7 @@ const Login = () => {
     const password = form.password.value;
     const userData = {email,password};
     console.log(userData);
+    form.reset();
   }
   return (
     <div className="hero min-h-screen">
