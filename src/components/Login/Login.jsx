@@ -10,9 +10,9 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     signIn(email,password)
-    .then(user =>{
-      setUser(user);
-      console.log(user);
+    .then(result =>{
+      setUser(result.user);
+      console.log(result.user);
       setLoading(false);
       form.reset();
     })

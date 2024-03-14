@@ -11,10 +11,10 @@ const SignUp = () => {
     const email = form.email.value;
     const password = form.password.value;
     newUser(name,email,password)
-    .then(user => {
-        setUser(user);
+    .then(result => {
+        setUser(result.user);
         setLoading(false);
-        console.log(user);
+        console.log(result.user);
     })
     .catch(error=> console.error(error));
     form.reset();
