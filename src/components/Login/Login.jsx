@@ -1,5 +1,13 @@
 import loginImg from "../../assets/images/login/login.svg";
 const Login = () => {
+  const handleLogin = event =>{
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const userData = {email,password};
+    console.log(userData);
+  }
   return (
     <div className="hero min-h-screen">
       <div className="hero-content flex-col lg:flex-row">
@@ -7,14 +15,15 @@ const Login = () => {
             <img src={loginImg} alt="Login Image" />
         </div>
         <div className="card shrink-0 w-full max-w-sm">
-          <form className="card-body">
-          <h1 className="text-3xl font-bold text-center">Login</h1>
+        <h1 className="text-3xl font-bold text-center">Login</h1>
+          <form onSubmit={handleLogin} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="email"
                 className="input input-bordered"
                 required
@@ -26,6 +35,7 @@ const Login = () => {
               </label>
               <input
                 type="password"
+                name="password"
                 placeholder="password"
                 className="input input-bordered"
                 required
@@ -37,7 +47,7 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <input className="btn btn-primary bg-[#FF3811] border-none rounded-lg" type="submit" value="Sign In" />
+              <input className="btn btn-primary bg-[#FF3811] border-none rounded-lg text-white" type="submit" value="Sign In" />
             </div>
           </form>
         </div>
