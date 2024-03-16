@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
 import Logo from "../../../assets/logo.svg";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProviders";
 const Header = () => {
+  const { user, logOut, setLoading } = useContext(AuthContext);
+  const handleLogOut = ()=>{
+    logOut()
+    .then(()=>{
+      setLoading(false);
+    })
+    .catch(error => console.error(error));
+  }
   const navList = (
     <>
       <li>
@@ -18,6 +28,15 @@ const Header = () => {
       <li>
         <Link to="/contact">Contact</Link>
       </li>
+      {user?.email ? (
+        <li>
+          <button onClick={handleLogOut}>Log Out</button>
+        </li>
+      ) : (
+        <li>
+          <Link to="/login">Log In</Link>
+        </li>
+      )}
     </>
   );
   return (
@@ -55,7 +74,9 @@ const Header = () => {
         <ul className="menu menu-horizontal px-1">{navList}</ul>
       </div>
       <div className="navbar-end">
-      <button className="btn btn-outline border-[#FF3811] btn-warning"><span className="text-[#FF3811]">Appointment</span></button>
+        <button className="btn btn-outline border-[#FF3811] btn-warning">
+          <span className="text-[#FF3811]">Appointment</span>
+        </button>
       </div>
     </div>
   );
