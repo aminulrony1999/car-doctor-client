@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProviders";
 
 const BookService = () => {
+    const {user} = useContext(AuthContext);
   const service = useLoaderData();
   const { _id, price, title } = service;
   const handleBookService = event =>{
@@ -11,7 +14,8 @@ const BookService = () => {
     const price = form.price.value;
     const details = {name, email, price};
     console.log(details);
-  }
+    form.reset();
+}
   return (
     <div>
       <h2 className="text-center text-3xl">Book Service : {title}</h2>
@@ -23,7 +27,7 @@ const BookService = () => {
             </label>
             <input
               type="text"
-              placeholder="name"
+              defaultValue={user?.displayName}
               name="name"
               className="input input-bordered"
               required
@@ -41,7 +45,7 @@ const BookService = () => {
             </label>
             <input
               type="email"
-              placeholder="email"
+                defaultValue={user?.email}
               name="email"
               className="input input-bordered"
               required
