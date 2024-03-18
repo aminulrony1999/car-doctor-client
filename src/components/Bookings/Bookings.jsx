@@ -15,10 +15,9 @@ const Bookings = () => {
     },[])
     return (
         <div>
-            <h2 className="text-5xl">Your Bookings : {bookings.length}</h2>
+            <h2 className="text-5xl">Your total Bookings : {bookings.length}</h2>
             <div className="overflow-x-auto">
   <table className="table">
-    {/* head */}
     <thead>
       <tr>
         <th>
@@ -26,10 +25,11 @@ const Bookings = () => {
             <input type="checkbox" className="checkbox" />
           </label>
         </th>
-        <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
+        <th>Image</th>
+        <th>Service</th>
+        <th>Date</th>
         <th>Price</th>
+        <th>Status</th>
       </tr>
     </thead>
     <tbody>
