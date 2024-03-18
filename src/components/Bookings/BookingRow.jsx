@@ -1,4 +1,5 @@
 const BookingRow = ({booking}) => {
+    const {service, date, price,img} = booking;
   return (
     <div>
       <tr>
@@ -8,29 +9,20 @@ const BookingRow = ({booking}) => {
           </label>
         </th>
         <td>
-          <div className="flex items-center gap-3">
             <div className="avatar">
-              <div className="mask mask-squircle w-12 h-12">
+              <div className="rounded w-24 h-24">
                 <img
-                  src="/tailwind-css-component-profile-2@56w.png"
-                  alt="Avatar Tailwind CSS Component"
+                  src={img}
+                  alt="Image of service"
                 />
               </div>
             </div>
-            <div>
-              <div className="font-bold">Hart Hagerty</div>
-              <div className="text-sm opacity-50">United States</div>
-            </div>
-          </div>
         </td>
         <td>
-          Zemlak, Daniel and Leannon
-          <br />
-          <span className="badge badge-ghost badge-sm">
-            Desktop Support Technician
-          </span>
+            {service}
         </td>
-        <td>Purple</td>
+        <td>{date}</td>
+        <td>{price}</td>
         <th>
           <button className="btn btn-ghost btn-xs">details</button>
         </th>
