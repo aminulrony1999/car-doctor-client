@@ -4,7 +4,7 @@ import { AuthContext } from "../../providers/AuthProviders";
 const Bookings = () => {
     const {user} = useContext(AuthContext);
     const [bookings, setBookings] = useState([]);
-    const url = `http://localhost:5000/bookings?email=${user.email}`;
+    const url = `http://localhost:5000/bookings?email=${user?.email}`;
     useEffect(()=>{
         fetch(url)
         .then(res => res.json())
@@ -14,7 +14,7 @@ const Bookings = () => {
     },[])
     return (
         <div>
-            
+            <div className="text-5xl">Your Bookings : {bookings.length}</div>
         </div>
     );
 };

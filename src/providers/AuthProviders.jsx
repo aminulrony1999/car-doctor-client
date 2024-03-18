@@ -28,16 +28,17 @@ const AuthProviders = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const signIn = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
   const logOut = () => {
-    setLoading(true);
     return signOut(auth);
   };
   const authInfo = {
     user,
     setUser,
     setLoading,
+    loading,
     newUser,
     signIn,
     logOut,
