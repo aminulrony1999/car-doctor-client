@@ -37,7 +37,11 @@ const Bookings = () => {
 
     const handleBookingConfirm = id =>{
       fetch(`http://localhost:5000/bookings/${id}`,{
-        method : 'PATCH'
+        method : 'PATCH',
+        headers : {
+          'content-type' : 'application/json'
+        },
+        body : JSON.stringify({status : 'confirm'})
       })
       .then(res => res.json())
       .then(data =>{
