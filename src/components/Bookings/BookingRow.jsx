@@ -1,9 +1,25 @@
 const BookingRow = ({ booking }) => {
-  const { service, date, price, img } = booking;
+  const {_id, service, date, price, img } = booking;
+  const handleDelete = id =>{
+    const proceed = confirm('Are you sure to delete ?');
+    console.log(proceed);
+    if(proceed)
+    {
+      fetch(`http://localhost:5000/bookings/${id}`,{
+        method : 'DELETE',
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if(data.deletedCount > 0)
+        alert("Deleted successfully");
+      })
+    }
+  }
   return (
     <tr>
       <th>
-        <button className="btn btn-sm btn-circle btn-outline">
+        <button onClick={()=>handleDelete(_id)} className="btn btn-sm btn-circle btn-outline">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
