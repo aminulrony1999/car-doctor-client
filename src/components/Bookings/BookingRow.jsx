@@ -1,6 +1,6 @@
 const BookingRow = ({ booking, handleDelete }) => {
   const {_id, service, date, price, img } = booking;
-  
+
   return (
     <tr>
       <th>
@@ -32,7 +32,7 @@ const BookingRow = ({ booking, handleDelete }) => {
       <td>{date}</td>
       <td>{price}</td>
       <th>
-        <button className="btn btn-ghost btn-xs">details</button>
+        <button className="btn btn-ghost btn-xs">Confirm</button>
       </th>
     </tr>
   );

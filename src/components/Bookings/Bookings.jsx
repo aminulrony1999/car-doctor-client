@@ -33,6 +33,21 @@ const Bookings = () => {
         })
       }
     }
+    
+
+    const handleBookingConfirm = id =>{
+      fetch(`http://localhost:5000/bookings/${id}`,{
+        method : 'PATCH'
+      })
+      .then(res => res.json())
+      .then(data =>{
+        console.log(data);
+        if(data.modifiedCount > 0)
+        {
+          //update request
+        }
+      })
+    }
     return (
         <div>
             <h2 className="text-5xl">Your total Bookings : {bookings.length}</h2>
@@ -54,7 +69,7 @@ const Bookings = () => {
     </thead>
     <tbody>
       {
-        bookings.map(booking => <BookingRow key={booking._id} booking = {booking} handleDelete={handleDelete}></BookingRow>)
+        bookings.map(booking => <BookingRow key={booking._id} booking = {booking} handleDelete={handleDelete} handleBookingConfirm={handleBookingConfirm}></BookingRow>)
       }
     </tbody>
   </table>
