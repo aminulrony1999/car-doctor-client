@@ -1,21 +1,6 @@
-const BookingRow = ({ booking }) => {
+const BookingRow = ({ booking, handleDelete }) => {
   const {_id, service, date, price, img } = booking;
-  const handleDelete = id =>{
-    const proceed = confirm('Are you sure to delete ?');
-    console.log(proceed);
-    if(proceed)
-    {
-      fetch(`http://localhost:5000/bookings/${id}`,{
-        method : 'DELETE',
-      })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        if(data.deletedCount > 0)
-        alert("Deleted successfully");
-      })
-    }
-  }
+  
   return (
     <tr>
       <th>
