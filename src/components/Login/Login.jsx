@@ -17,7 +17,7 @@ const Login = () => {
       console.log(result.user);
       setLoading(false);
       form.reset();
-      navigate(location?.state ? location.state : '/');
+      navigate(location?.state ? location.state : '/', {replace : true});
     })
     .catch(error => console.error(error));
   }
