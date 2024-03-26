@@ -13,6 +13,8 @@ const Login = () => {
     const password = form.password.value;
     signIn(email,password)
     .then(result =>{
+      //get access token
+      
       setUser(result.user);
       console.log(result.user);
       setLoading(false);
