@@ -2,35 +2,42 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginImg from "../../assets/images/login/login.svg";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
+import axios from "axios";
 const Login = () => {
-  const {signIn,setUser,setLoading} = useContext(AuthContext);
+  const { signIn, setUser, setLoading } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
-  const handleLogin = event =>{
+  const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    signIn(email,password)
-    .then(result =>{
-      //get access token
-      
-      setUser(result.user);
-      console.log(result.user);
-      setLoading(false);
-      form.reset();
-      navigate(location?.state ? location.state : '/', {replace : true});
-    })
-    .catch(error => console.error(error));
-  }
+    signIn(email, password)
+      .then((result) => {
+        const loggedInUser = result.user;
+        const user = { email };
+        //get access token
+        axios
+          .post("http://localhost:5000/jwt", user)
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((error) => console.log(error));
+        setUser(loggedInUser);
+        setLoading(false);
+        form.reset();
+        navigate(location?.state ? location.state : "/", { replace: true });
+      })
+      .catch((error) => console.error(error));
+  };
   return (
     <div className="hero">
       <div className="hero-content flex-col lg:flex-row">
         <div className="w-1/2 mr-12">
-            <img src={loginImg} alt="Login Image" />
+          <img src={loginImg} alt="Login Image" />
         </div>
         <div className="card shrink-0 w-full max-w-sm">
-        <h1 className="text-3xl font-bold text-center">Login</h1>
+          <h1 className="text-3xl font-bold text-center">Login</h1>
           <form onSubmit={handleLogin} className="card-body">
             <div className="form-control">
               <label className="label">
@@ -62,10 +69,19 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <input className="btn btn-primary bg-[#FF3811] border-none rounded-lg text-white" type="submit" value="Sign In" />
+              <input
+                className="btn btn-primary bg-[#FF3811] border-none rounded-lg text-white"
+                type="submit"
+                value="Sign In"
+              />
             </div>
           </form>
-          <p className="text-center">New to car doctors? <Link to='/signup'><span className="text-[#FF3811] font-bold">Sign Up</span></Link></p>
+          <p className="text-center">
+            New to car doctors?{" "}
+            <Link to="/signup">
+              <span className="text-[#FF3811] font-bold">Sign Up</span>
+            </Link>
+          </p>
         </div>
       </div>
     </div>
