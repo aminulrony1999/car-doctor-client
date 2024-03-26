@@ -18,15 +18,15 @@ const Login = () => {
         const user = { email };
         //get access token
         axios
-          .post("http://localhost:5000/jwt", user,{withCredentials : true})
+          .post("http://localhost:5000/jwt", user, { withCredentials: true })
           .then((res) => {
             console.log(res.data);
+            setUser(loggedInUser);
+            setLoading(false);
+            form.reset();
+            navigate(location?.state ? location.state : "/", { replace: true });
           })
           .catch((error) => console.log(error));
-        setUser(loggedInUser);
-        setLoading(false);
-        form.reset();
-        navigate(location?.state ? location.state : "/", { replace: true });
       })
       .catch((error) => console.error(error));
   };
