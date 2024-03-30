@@ -4,13 +4,13 @@ import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProviders";
 const Header = () => {
   const { user, logOut, setLoading } = useContext(AuthContext);
-  const handleLogOut = ()=>{
+  const handleLogOut = () => {
     logOut()
-    .then(()=>{
-      setLoading(false);
-    })
-    .catch(error => console.error(error));
-  }
+      .then(() => {
+        setLoading(false);
+      })
+      .catch((error) => console.error(error));
+  };
   const navList = (
     <>
       <li>
@@ -30,17 +30,22 @@ const Header = () => {
       </li>
       {user?.email ? (
         <>
-        <li>
-        <Link to="/bookings">My Bookings</Link>
-      </li>
-        <li>
-          <button onClick={handleLogOut}>Log Out</button>
-        </li>
+          <li>
+            <Link to="/bookings">My Bookings</Link>
+          </li>
+          <li>
+            <button onClick={handleLogOut}>Log Out</button>
+          </li>
         </>
       ) : (
-        <li>
-          <Link to="/login">Log In</Link>
-        </li>
+        <>
+          <li>
+            <Link to="/login">Log In</Link>
+          </li>
+          <li>
+            <Link to="/signup">Sign Up</Link>
+          </li>
+        </>
       )}
     </>
   );
