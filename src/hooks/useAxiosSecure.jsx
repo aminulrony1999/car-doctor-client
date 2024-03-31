@@ -4,7 +4,7 @@ import { AuthContext } from "../providers/AuthProviders";
 import { useNavigate } from "react-router-dom";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://car-doctor-express-server-xi.vercel.app",
   withCredentials: true,
 });
 const useAxiosSecure = () => {

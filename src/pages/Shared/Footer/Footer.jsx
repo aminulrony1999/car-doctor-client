@@ -18,7 +18,6 @@ const Footer = () => {
         <a className="link link-hover">Marketing</a>
         <a className="link link-hover">Advertisement</a>
         <a href="https://www.google.com/"  >Google</a>
-        <Link to={"https://www.google.com/"} className="link link-hover">Google</Link>
       </nav>
       <nav>
         <h6 className="footer-title">Company</h6>

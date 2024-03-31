@@ -7,7 +7,7 @@ const Bookings = () => {
   const { user } = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
   const axiosSecure = useAxiosSecure(); //axiosecure hook imported
-  // const url = `http://localhost:5000/bookings?email=${user?.email}`;
+  // const url = `https://car-doctor-express-server-xi.vercel.app/bookings?email=${user?.email}`;
    const url = `/bookings?email=${user?.email}`;
   useEffect(() => {
     //instead of using axios, we are using axiosSecure which is our custom hook
@@ -24,7 +24,7 @@ const Bookings = () => {
     const proceed = confirm("Are you sure to delete ?");
     console.log(proceed);
     if (proceed) {
-      fetch(`http://localhost:5000/bookings/${id}`, {
+      fetch(`https://car-doctor-express-server-xi.vercel.app/bookings/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -40,7 +40,7 @@ const Bookings = () => {
   };
 
   const handleBookingConfirm = (id) => {
-    fetch(`http://localhost:5000/bookings/${id}`, {
+    fetch(`https://car-doctor-express-server-xi.vercel.app/bookings/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

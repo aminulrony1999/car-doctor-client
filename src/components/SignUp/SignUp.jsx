@@ -17,7 +17,7 @@ const SignUp = () => {
         const user = { email };
         //get access token
         axios
-          .post("http://localhost:5000/jwt", user, { withCredentials: true })
+          .post("https://car-doctor-express-server-xi.vercel.app/jwt", user, { withCredentials: true })
           .then((res) => {
             console.log(res.data);
             setUser(result.user);
